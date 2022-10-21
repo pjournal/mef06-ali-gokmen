@@ -1,0 +1,6 @@
+"0","planes%>%"
+"0","  filter(engine == ""Turbo-jet"")%>%"
+"0","  group_by(manufacturer,model,engine)%>%"
+"0","  summarize(count=n())%>%"
+"0","  arrange(desc(count))"
+"2","`summarise()` has grouped output by 'manufacturer', 'model'. You can override using the `.groups` argument."

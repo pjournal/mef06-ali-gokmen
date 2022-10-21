@@ -24,7 +24,7 @@ glimpse(planes)
 ```{r}
 planes%>%
   filter(engine == "Turbo-jet")%>%
-  group_by(manufacturer,engine)%>%
+  group_by(manufacturer,model,engine)%>%
   summarize(count=n())%>%
   arrange(desc(count))
 
@@ -34,7 +34,7 @@ planes%>%
 
 ```{r}
 planes%>%
-  group_by(manufacturer) %>%
+  group_by(manufacturer,model) %>%
   summarize(count=n(),avg_age = mean(2022-year, na.rm = T))%>%
   arrange(desc(count), avg_age)
   

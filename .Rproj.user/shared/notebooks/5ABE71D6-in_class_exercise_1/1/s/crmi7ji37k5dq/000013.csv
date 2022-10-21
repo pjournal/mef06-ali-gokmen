@@ -1,3 +1,5 @@
-"0","  "
-"0","  "
-"0","  "
+"0","planes%>%"
+"0","  group_by(manufacturer,model) %>%"
+"0","  summarize(count=n(),avg_age = mean(2022-year, na.rm = T))%>%"
+"0","  arrange(desc(count), avg_age)"
+"2","`summarise()` has grouped output by 'manufacturer'. You can override using the `.groups` argument."
