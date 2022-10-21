@@ -1,9 +1,9 @@
 {
     "id": "6A549AE2",
-    "path": "~/GitHub/mef06-ali-gokmen/In Class Exercise 1.qmd",
-    "project_path": "In Class Exercise 1.qmd",
+    "path": "~/GitHub/mef06-ali-gokmen/assignment1.qmd",
+    "project_path": "assignment1.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "805654041",
     "contents": "",
     "dirty": false,
     "created": 1665929715712.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "10,0",
-        "scrollLine": "0"
+        "cursorPosition": "28,0",
+        "scrollLine": "9"
     },
     "folds": "",
-    "lastKnownWriteTime": 1666372739,
+    "lastKnownWriteTime": 1666117989,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1666372739,
+    "last_content_update": 1666117989391,
     "read_only": false,
     "read_only_alternatives": []
 }

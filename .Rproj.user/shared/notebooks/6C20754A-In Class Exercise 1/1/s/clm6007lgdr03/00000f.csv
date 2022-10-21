@@ -1,6 +1,0 @@
-"0",""
-"0","planes %>%"
-"0","  filter(engine == ""Turbo-fan"")%>%"
-"0","  group_by(manufacturer) %>%"
-"0","  summarise(count=n()) %>%"
-"0","  arrange(desc(count))"

@@ -1,0 +1,99 @@
+---
+title: "Assignment 1"
+author: "Ali Gökmen"
+date: "2022-10-16"
+---
+
+## ABOUT ME
+
+Hello, I am Muhammed Ali Gökmen and 24 yo. I finished my Bachelor of City and Regional Planning in 2020 from Mimar Sinan Fine Arts University with the thesis of “The Relationship Between Smart Cities and Smart Energy Systems: The sample of Urban Planning”. I examined in one part of my thesis that how smart energy systems can effectively manage by technology of big data and IoT. Also in my university years, I always curious about data and  how to process it effectively. I have got Python class in university, some data analytics and statistics  courses on Udemy and other educational places to get some insights and see what I can do in this area on the basis of personal curiosity. Besides, in my part time job I had the chance to practice the theoretical  knowledge I learned from this course. While last year of my university I worked for Turkish Airlines as a part time clerk. I enhanced my data analytics skills in this meantime to have a oppurtunity to get hired there and keep pushing developing myself. After graduation I got hired as a specialist in the Management of Strategic Planning and Data Analysis Turkish Airlines and still working there now. In general, we are responsible for the analysis of reports flowing into our database. Basically, we clean the data by doing the relevant filters, then analyze it and focus on making meaningful inferences. We report the results to our executives in order to contribute to their decision-making processes.I want to use data analytics skills in our monthly sales forecasting process to shape it more understandable and realistic.
+
+[**_Here is my linkedin profile_**](https://www.linkedin.com/in/maligokmen/)
+
+## **Dashboard-Builder: Building Shiny Apps without writing any code**
+
+I have preferred to watch the conference named "Dashboard-Builder: Building Shiny Apps" presenting by Peter Gandenberger. 
+
+In this conference, Mr. Ganderberger appealed to people who want to make dashboard but don't know how to code in R and consider that R complex. So, last project of Peter's team allows people to make interactive dashboards. 
+
+This drag&drop dashboard builder lowering the barrier for entry new users starting their data-science journey.
+
+Main steps:
+
+1. Import data
+2. Build Dashboard
+3. Export
+4. Improve & Extend
+
+Here is a screenshot of an example dashboard:
+
+
+## 3 R Posts relevant to my interest
+### Dot Chart
+
+
+```{r}
+
+### Dot Chart
+
+### Setting seed for reproducibility
+set.seed(1)
+
+### Defining variables
+month <- month.name
+expected <- c(15, 16, 20, 31, 11, 6,
+              17, 22, 32, 12, 19, 20)
+sold <- c(8, 18, 12, 10, 41, 2,
+          19, 26, 14, 16, 9, 13)
+quarter <- c(rep(1, 3), rep(2, 3), rep(3, 3), rep(4, 3))
+
+### Printing data
+data <- data.frame(month, expected, sold, quarter)
+data
+
+### Chart
+dotchart(data$sold, labels = data$month, pch = 21, bg = "green", pt.cex = 1.5)
+
+
+``` 
+
+### Bar Plot Chart
+
+Bar plot charts can be used efficiently for: 
+
+-to analyze a comparative study between various categories
+
+-to analyze the change of a variable over time in months or years
+
+For example:
+
+```{r}
+
+barplot(airquality$Ozone, main = 'Ozone Concenteration in air', 
+        xlab = 'ozone levels', col ='blue', horiz = FALSE)
+
+``` 
+
+### Density Plot Chart    
+
+Density plot chart can be used when we need to see representation of the distribution of a variable.
+
+For example:
+
+```{r}
+
+library(ggplot2)
+theme_set(theme_classic())
+
+# Plot
+g <- ggplot(mpg, aes(cty))
+g + geom_density(aes(fill=factor(cyl)), alpha=0.8) + 
+    labs(title="Density plot", 
+         subtitle="City Mileage Grouped by Number of cylinders",
+         caption="Source: mpg",
+         x="City Mileage",
+         fill="# Cylinders")
+``` 
+
+
+[**Source Link**](https://www.geeksforgeeks.org/)
