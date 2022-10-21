@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ali Gokmen / Peace & Trust Progress Journal",
-    "section": "",
-    "text": "This progress journal covers [STUDENT NAME SURNAME / PROJECT GROUP NAME]’s work during their term at BDA 503 Fall 2022.\nEach section is an assignment or an individual work."
-  },
-  {
     "objectID": "assignment1.html",
     "href": "assignment1.html",
     "title": "1  Assignment 1",
@@ -26,5 +19,33 @@
     "title": "1  Assignment 1",
     "section": "1.3 3 R Posts relevant to my interest",
     "text": "1.3 3 R Posts relevant to my interest\n\n1.3.1 Dot Chart\n\n### Dot Chart\n\n### Setting seed for reproducibility\nset.seed(1)\n\n### Defining variables\nmonth <- month.name\nexpected <- c(15, 16, 20, 31, 11, 6,\n              17, 22, 32, 12, 19, 20)\nsold <- c(8, 18, 12, 10, 41, 2,\n          19, 26, 14, 16, 9, 13)\nquarter <- c(rep(1, 3), rep(2, 3), rep(3, 3), rep(4, 3))\n\n### Printing data\ndata <- data.frame(month, expected, sold, quarter)\ndata\n\n       month expected sold quarter\n1    January       15    8       1\n2   February       16   18       1\n3      March       20   12       1\n4      April       31   10       2\n5        May       11   41       2\n6       June        6    2       2\n7       July       17   19       3\n8     August       22   26       3\n9  September       32   14       3\n10   October       12   16       4\n11  November       19    9       4\n12  December       20   13       4\n\n### Chart\ndotchart(data$sold, labels = data$month, pch = 21, bg = \"green\", pt.cex = 1.5)\n\n\n\n\n\n\n1.3.2 Bar Plot Chart\nBar plot charts can be used efficiently for:\n-to analyze a comparative study between various categories\n-to analyze the change of a variable over time in months or years\nFor example:\n\nbarplot(airquality$Ozone, main = 'Ozone Concenteration in air', \n        xlab = 'ozone levels', col ='blue', horiz = FALSE)\n\n\n\n\n\n\n1.3.3 Density Plot Chart\nDensity plot chart can be used when we need to see representation of the distribution of a variable.\nFor example:\n\nlibrary(ggplot2)\ntheme_set(theme_classic())\n\n# Plot\ng <- ggplot(mpg, aes(cty))\ng + geom_density(aes(fill=factor(cyl)), alpha=0.8) + \n    labs(title=\"Density plot\", \n         subtitle=\"City Mileage Grouped by Number of cylinders\",\n         caption=\"Source: mpg\",\n         x=\"City Mileage\",\n         fill=\"# Cylinders\")\n\n\n\n\nSource Link"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ali Gokmen / Peace & Trust Progress Journal",
+    "section": "",
+    "text": "This progress journal covers [STUDENT NAME SURNAME / PROJECT GROUP NAME]’s work during their term at BDA 503 Fall 2022.\nEach section is an assignment or an individual work."
+  },
+  {
+    "objectID": "in_class_exercise_1.html",
+    "href": "in_class_exercise_1.html",
+    "title": "2  In Class Exercise 1",
+    "section": "",
+    "text": "Let’s invoke the libraries we need in this exercise.\nBefore analysis, let’s take a look what we have in the dataset."
+  },
+  {
+    "objectID": "in_class_exercise_1.html#the-number-of-planes-having-turbo-jet-engine-by-manufacturer",
+    "href": "in_class_exercise_1.html#the-number-of-planes-having-turbo-jet-engine-by-manufacturer",
+    "title": "2  In Class Exercise 1",
+    "section": "2.1 The number of planes having Turbo-jet engine by manufacturer",
+    "text": "2.1 The number of planes having Turbo-jet engine by manufacturer\n\nplanes%>%\n  filter(engine == \"Turbo-jet\")%>%\n  group_by(manufacturer,engine)%>%\n  summarize(count=n())%>%\n  arrange(desc(count))\n\n`summarise()` has grouped output by 'manufacturer'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 8 × 3\n# Groups:   manufacturer [8]\n  manufacturer                  engine    count\n  <chr>                         <chr>     <int>\n1 BOEING                        Turbo-jet   354\n2 AIRBUS INDUSTRIE              Turbo-jet   130\n3 MCDONNELL DOUGLAS             Turbo-jet    29\n4 MCDONNELL DOUGLAS CORPORATION Turbo-jet    14\n5 AIRBUS                        Turbo-jet     5\n6 CANADAIR LTD                  Turbo-jet     1\n7 EMBRAER                       Turbo-jet     1\n8 GULFSTREAM AEROSPACE          Turbo-jet     1"
+  },
+  {
+    "objectID": "in_class_exercise_1.html#the-number-of-planes-with-age-and-manufacturer-detail",
+    "href": "in_class_exercise_1.html#the-number-of-planes-with-age-and-manufacturer-detail",
+    "title": "2  In Class Exercise 1",
+    "section": "2.2 The number of planes with age and manufacturer detail",
+    "text": "2.2 The number of planes with age and manufacturer detail\n\nplanes%>%\n  group_by(manufacturer) %>%\n  summarize(count=n(),avg_age = mean(2022-year, na.rm = T))%>%\n  arrange(desc(count), avg_age)\n\n# A tibble: 35 × 3\n   manufacturer                  count avg_age\n   <chr>                         <int>   <dbl>\n 1 BOEING                         1630    21.9\n 2 AIRBUS INDUSTRIE                400    23.8\n 3 BOMBARDIER INC                  368    17.5\n 4 AIRBUS                          336    14.8\n 5 EMBRAER                         299    18.4\n 6 MCDONNELL DOUGLAS               120    32.1\n 7 MCDONNELL DOUGLAS AIRCRAFT CO   103    32.3\n 8 MCDONNELL DOUGLAS CORPORATION    14    30.1\n 9 CANADAIR                          9    24.7\n10 CESSNA                            9    49.6\n# … with 25 more rows"
   }
 ]
