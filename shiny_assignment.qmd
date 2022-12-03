@@ -20,7 +20,7 @@ library(scales)
 library(shiny)
 ```
 
-Before analysis, let's take a look what we have in the dataset.
+Before creating dashboard, let's read and fix the datasets.
 
 ```{r}
 students <- read_excel("Shiny/foreign_students.xlsx")
@@ -47,6 +47,6 @@ students
 
 
 ```{r, eval = FALSE}
-shiny::runGitHub("pjournal/mef06-ali-gokmen",subdir="Shiny/")
+shiny::runGitHub(repo = "pjournal/mef06-ali-gokmen",subdir="/Shiny")
 ```
 

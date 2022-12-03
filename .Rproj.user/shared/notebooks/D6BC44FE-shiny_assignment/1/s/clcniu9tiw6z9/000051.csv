@@ -1,0 +1,24 @@
+"0","shiny::runGitHub(repo = ""pjournal/mef06-ali-gokmen"",subdir=""/Shiny"")"
+"2","Downloading https://github.com/pjournal/mef06-ali-gokmen/archive/HEAD.tar.gz
+"
+"2","
+Listening on http://127.0.0.1:3651
+"
+"2","Warning in utils::download.file(paste0(""http://localhost:"", port, ""/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/"",  :"
+"2","
+ "
+"2"," downloaded length 0 != reported length 9
+"
+"2","Warning in utils::download.file(paste0(""http://localhost:"", port, ""/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/"",  :"
+"2","
+ "
+"2"," cannot open URL 'http://localhost:3239/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/shiny_assignment.qmd': HTTP status was '404 Not Found'
+"
+"2","Error in utils::download.file(paste0(""http://localhost:"", port, ""/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/"",  : 
+  cannot open URL 'http://localhost:3239/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/shiny_assignment.qmd'
+"
+"2","Error rendering file : shiny_assignment.qmd
+Error in utils::download.file(paste0(""http://localhost:"", port, ""/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/"",  : 
+  cannot open URL 'http://localhost:3239/90B3C9E8-0DBC-4BC0-B164-AA2D5C031B28/shiny_assignment.qmd'
+
+"
