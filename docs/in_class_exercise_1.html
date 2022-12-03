@@ -272,26 +272,29 @@ $ engine       &lt;chr&gt; "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turbo-fan", "
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>planes<span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(engine <span class="sc">==</span> <span class="st">"Turbo-jet"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,engine)<span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,model,engine)<span class="sc">%&gt;%</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count=</span><span class="fu">n</span>())<span class="sc">%&gt;%</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'manufacturer'. You can override using the
-`.groups` argument.</code></pre>
+<pre><code>`summarise()` has grouped output by 'manufacturer', 'model'. You can override
+using the `.groups` argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 3
-# Groups:   manufacturer [8]
-  manufacturer                  engine    count
-  &lt;chr&gt;                         &lt;chr&gt;     &lt;int&gt;
-1 BOEING                        Turbo-jet   354
-2 AIRBUS INDUSTRIE              Turbo-jet   130
-3 MCDONNELL DOUGLAS             Turbo-jet    29
-4 MCDONNELL DOUGLAS CORPORATION Turbo-jet    14
-5 AIRBUS                        Turbo-jet     5
-6 CANADAIR LTD                  Turbo-jet     1
-7 EMBRAER                       Turbo-jet     1
-8 GULFSTREAM AEROSPACE          Turbo-jet     1</code></pre>
+<pre><code># A tibble: 41 × 4
+# Groups:   manufacturer, model [41]
+   manufacturer      model    engine    count
+   &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt;
+ 1 BOEING            757-222  Turbo-jet    80
+ 2 BOEING            737-832  Turbo-jet    71
+ 3 AIRBUS INDUSTRIE  A319-131 Turbo-jet    50
+ 4 BOEING            757-224  Turbo-jet    41
+ 5 BOEING            737-724  Turbo-jet    32
+ 6 BOEING            757-251  Turbo-jet    29
+ 7 AIRBUS INDUSTRIE  A320-211 Turbo-jet    25
+ 8 AIRBUS INDUSTRIE  A321-211 Turbo-jet    25
+ 9 MCDONNELL DOUGLAS MD-90-30 Turbo-jet    21
+10 AIRBUS INDUSTRIE  A319-132 Turbo-jet    20
+# … with 31 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -299,24 +302,29 @@ $ engine       &lt;chr&gt; "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turbo-fan", "
 <h2 data-number="2.2" class="anchored" data-anchor-id="the-number-of-planes-with-age-and-manufacturer-detail"><span class="header-section-number">2.2</span> The number of planes with age and manufacturer detail</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>planes<span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,model) <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count=</span><span class="fu">n</span>(),<span class="at">avg_age =</span> <span class="fu">mean</span>(<span class="dv">2022</span><span class="sc">-</span>year, <span class="at">na.rm =</span> T))<span class="sc">%&gt;%</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count), avg_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'manufacturer'. You can override using the
+`.groups` argument.</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 35 × 3
-   manufacturer                  count avg_age
-   &lt;chr&gt;                         &lt;int&gt;   &lt;dbl&gt;
- 1 BOEING                         1630    21.9
- 2 AIRBUS INDUSTRIE                400    23.8
- 3 BOMBARDIER INC                  368    17.5
- 4 AIRBUS                          336    14.8
- 5 EMBRAER                         299    18.4
- 6 MCDONNELL DOUGLAS               120    32.1
- 7 MCDONNELL DOUGLAS AIRCRAFT CO   103    32.3
- 8 MCDONNELL DOUGLAS CORPORATION    14    30.1
- 9 CANADAIR                          9    24.7
-10 CESSNA                            9    49.6
-# … with 25 more rows</code></pre>
+<pre><code># A tibble: 147 × 4
+# Groups:   manufacturer [35]
+   manufacturer                  model       count avg_age
+   &lt;chr&gt;                         &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt;
+ 1 BOEING                        737-7H4       361    18.1
+ 2 BOMBARDIER INC                CL-600-2B19   162    19.3
+ 3 AIRBUS                        A320-232      129    16.3
+ 4 AIRBUS INDUSTRIE              A320-232      127    23.9
+ 5 BOMBARDIER INC                CL-600-2D24   123    14.9
+ 6 BOEING                        737-824       122    19.4
+ 7 EMBRAER                       EMB-145LR     114    21.6
+ 8 BOEING                        737-3H4       105    27.6
+ 9 EMBRAER                       EMB-145XR     104    18.4
+10 MCDONNELL DOUGLAS AIRCRAFT CO MD-88         103    32.3
+# … with 137 more rows</code></pre>
 </div>
 </div>
 

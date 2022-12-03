@@ -1,0 +1,100 @@
+---
+title: "In Class Exercise 1"
+author: "Ali Gökmen"
+date: 2022-10-21
+format: 
+  html:
+    toc: true
+---
+
+Let's invoke the libraries we need in this exercise.
+
+```{r}
+library(readxl)
+library(lubridate)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(stringr)
+```
+
+Before analysis, let's take a look what we have in the dataset.
+
+```{r}
+data <- read_excel("startup_deals_2021.xlsx")
+```
+
+```{r}
+data <- data %>% 
+  rename(Stage = 'Investment Stage',
+         Company = 'Target Company',
+         DealValue = 'Deal Value (USD)',
+         Financial = 'Financial Investor',
+         Date = 'Announcement Date',
+         Origin ="Investor's Origin",
+         Stake = "Stake (%)")
+
+options(scipen=999)
+data$DealValue <- suppressWarnings(as.numeric(data$DealValue))
+
+data$Date <- my(data$Date)
+
+
+data <- data %>% 
+  mutate(Stake = str_replace_all(Stake, "%", ""))
+data$Stake <- suppressWarnings(as.numeric(data$Stake))
+sapply(data, class)
+
+data_incons <- data %>%
+  filter(Sector %in% c('Diğital Comparison',
+'Artificial intelligence',
+'Cybersec urity',
+'Telecpm',
+'Artificial Intelligence',
+'B lockchain'
+))
+unique(data_incons$Sector)
+
+data$Sector[data$Sector == 'Artificial intelligence'] <- 'Artificial Intelligence'
+data$Sector[data$Sector == 'Telecpm'] <- 'Telecom'
+data$Sector[data$Sector == 'B lockchain'] <- 'Blockchain'
+data$Sector[data$Sector == 'Diğital '] <- 'Dijital'
+data$Sector[data$Sector == 'Cybersec urity '] <- 'Cybersecurity'
+data$Sector[data$Sector == 'Ecommerce enabler'] <- 'Ecommerce Enabler'
+data$sector[data$Sector == 'I mage process'] <- 'Image process'
+
+knitr::kable(head(data))
+```
+
+
+```{r}
+data
+```
+
+```{r}
+
+data$inv_count <- lengths(strsplit(data$Investor, ","))
+
+df1 <- data %>%
+  group_by(Date,Sector,Company)%>%
+  filter(Company =! "Trendyol" | Company =! "Getir") %>%
+  summarize(Sector, DealValue) %>%
+  slice_max(DealValue,n=10) %>%
+  ungroup()%>%
+  arrange(desc(DealValue))
+
+```
+
+
+```{r}
+div = 1000000
+
+ggplot(data=df1, aes(x=Date, y=DealValue/div)) +
+  geom_bar(position="dodge",stat="identity") + 
+  ggtitle("Total Deal Value by Months") + xlab("Date") + ylab("Deal Value (million dollar)")
+  theme(axis.text.x = element_text(angle = 90)) 
+
+```
+
+
+

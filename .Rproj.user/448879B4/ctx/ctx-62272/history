@@ -1,0 +1,69 @@
+install.packages("nycflights13")
+install.packages("nycflights13")
+library(nycflights13)
+library(dplyr)
+library(nycflights13)
+library(stringr)
+library(tidyverse )
+library(nycflights13)
+``{r,message=FALSE}
+glimpse(planes)
+library(tidyverse)
+library(nycflights13)
+glimpse(planes)
+glimpse(planes)
+planes%>%
+filter(engine = "Turbo-jet")%>%
+group_by(manufacturer)%>%
+summarize(count=n())%>%
+arrange(count)
+planes%>%
+filter(engine == "Turbo-jet")%>%
+group_by(manufacturer)%>%
+summarize(count=n())%>%
+arrange(count)
+planes%>%
+filter(engine == "Turbo-jet")%>%
+group_by(manufacturer,engine)%>%
+summarize(count=n())%>%
+arrange(desc(count))
+planes%>%
+group_by(manufacturer) %>%
+summarize(count=n(),avg_age = mean(2022-year, na.Rm = T))%>%
+arrange(desc(count), avg_age)
+planes%>%
+group_by(manufacturer) %>%
+summarize(count=n(),avg_age = mean(2022-year, na.rm = T))%>%
+arrange(desc(count), avg_age)
+planes%>%
+filter(engine == "Turbo-jet")%>%
+group_by(manufacturer,model,engine)%>%
+summarize(count=n())%>%
+arrange(desc(count))
+planes%>%
+group_by(manufacturer,model) %>%
+summarize(count=n(),avg_age = mean(2022-year, na.rm = T))%>%
+arrange(desc(count), avg_age)
+datasets <- readxl_example("startup_deals_2021.xlsx")
+datasets <- readxl_example("startup_deals_2021.xlsx")
+install.packages("readxl")
+datasets <- readxl_example("startup_deals_2021.xlsx")
+install.packages("readxl_example")
+devtools::install_github("tidyverse/readxl")
+datasets <- readxl("startup_deals_2021.xlsx")
+library(tidyverse)
+library(ggplot2)
+library(readxl)
+readxl_example("startup_deals_2021.xlsx")
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readxl)
+readxl_example("startup_deals_2021.xlsx")
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readxl)
+# Use a excel file included in the package
+sample <- system.file("extdata", "startup_deals_2021.xlsx, package = "readxl")
+install.packages("readxl")

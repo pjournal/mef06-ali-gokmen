@@ -1,0 +1,4 @@
+"0","df1 %>% ggplot(aes(x= sector, y= total_inv, color = total_inv)) + geom_point(aes(size = total_inv)) +"
+"0","theme(axis.text.x = element_text(angle = 60)) + labs(title = ""Investor Count by Sector"") +"
+"0","        xlab(""Sectors"") +"
+"0","        ylab(""Total Investors"")"

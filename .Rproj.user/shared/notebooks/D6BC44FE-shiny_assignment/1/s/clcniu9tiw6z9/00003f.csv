@@ -1,0 +1,12 @@
+"0","shiny::runGitHub(""pjournal/mef06-ali-gokmen"",subdir=""Shiny/"")"
+"2","Downloading https://github.com/pjournal/mef06-ali-gokmen/archive/HEAD.tar.gz
+"
+"1","[1m[33mError[39m in `shinyAppDir()`:[22m
+[33m![39m No Shiny application exists at the path ""C:\Users\malig\AppData\Local\Temp\RtmpWcJUJ0\shinyapp32381122613/mef06-ali-gokmen-3583075ce6e1e0e3b468b14886a0b9e29c12446c/Shiny""
+Backtrace:
+[90m 1. [39m[1mshiny[22m::runGitHub(""pjournal/mef06-ali-gokmen"", subdir = ""Shiny/"")
+[90m 2. [39mshiny::runUrl(url, subdir = subdir, destdir = destdir, ...)
+[90m 3. [39mshiny::runApp(appdir, ...)
+[90m 5. [39mshiny:::as.shiny.appobj.character(appDir)
+[90m 6. [39m[1m[94mshiny::shinyAppDir([39m[22mx[1m[94m)[39m[22m
+"

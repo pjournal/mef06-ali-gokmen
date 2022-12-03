@@ -1,0 +1,13 @@
+name: First_Shiny_App
+title: First_Shiny_App
+username:
+account: ali-gokmen
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7804428
+bundleId: 6587087
+url: https://ali-gokmen.shinyapps.io/First_Shiny_App/
+when: 1670097575.02103
+lastSyncTime: 1670097575.02105
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,7 +1,0 @@
-[2,"\n"]
-[1,"Terminating existing preview server....DONE\n\nPreparing to preview\n"]
-[1,"\nWatching files for changes\nBrowse at http://localhost:5736/\n"]
-[1,"GET: /\n"]
-[1,"GET: /in_class_exercise_1.html\n"]
-[1,"WARNING: error shutting down connection: Varolan bir bağlantı uzaktaki bir ana bilgisayar tarafından zorla kapatıldı. (os error 10054)\n"]
-[1,"GET: /\n"]

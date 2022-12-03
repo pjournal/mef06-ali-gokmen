@@ -1,0 +1,8 @@
+"0","df2 <-deals %>%"
+"0","  group_by(sector, announcement_date) %>%"
+"0","  summarize(total_inv = sum(inv_count)) %>%"
+"0","  ungroup() %>%"
+"0","  top_n(10,total_inv) %>%"
+"0","  arrange(desc(total_inv))"
+"2","`summarise()` has grouped output by 'sector'. You can override using the `.groups` argument."
+"0","df2"

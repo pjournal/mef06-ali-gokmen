@@ -1,0 +1,52 @@
+---
+title: "Shiny Assignment"
+author: "Ali Gökmen"
+date: 2022-12-03
+format: 
+  html:
+    toc: true
+---
+
+Let's invoke the libraries we need in this exercise.
+
+```{r}
+library(dplyr)
+library(readxl)
+library(tidyr)
+library(ggplot2)
+library(reshape)
+library(tidyverse)
+library(scales)
+library(shiny)
+```
+
+Before analysis, let's take a look what we have in the dataset.
+
+```{r}
+students <- read_excel("Shiny/foreign_students.xlsx")
+saveRDS(students, file = "students.rds")
+readRDS(file = "students.rds")
+```
+
+```{r}
+new_cols <- c("university","type","province","nationality","male","female","total")
+colnames(students) <- new_cols
+
+students <- na.omit(students)
+
+students <- students %>% mutate(`female` = as.numeric(`female`))
+students <- students %>% mutate(`male` = as.numeric(`male`))
+students <- students %>% mutate(`total` = as.numeric(`total`))
+
+students
+```
+
+## Shinyapps.io
+
+<https://ali-gokmen.shinyapps.io/First_Shiny_App/>
+
+
+```{r, eval = FALSE}
+shiny::runGitHub("pjournal/mef06-ali-gokmen",subdir="Shiny/")
+```
+

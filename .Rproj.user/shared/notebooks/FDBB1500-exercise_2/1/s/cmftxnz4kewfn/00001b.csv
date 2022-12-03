@@ -1,0 +1,6 @@
+"0","df2 %>% "
+"0","  ggplot(aes(x= announcement_date, y= total_inv, fill = sector)) + geom_col() +"
+"0","theme(axis.text.x = element_text(angle = 90)) + labs(title = ""Investor Count by Sector"") +"
+"0","        xlab(""Sector"") +"
+"0","        ylab(""Total Investors"")"
+"0",""
