@@ -47,5 +47,19 @@
     "title": "2  In Class Exercise 1",
     "section": "2.2 The number of planes with age and manufacturer detail",
     "text": "2.2 The number of planes with age and manufacturer detail\n\nplanes%>%\n  group_by(manufacturer,model) %>%\n  summarize(count=n(),avg_age = mean(2022-year, na.rm = T))%>%\n  arrange(desc(count), avg_age)\n\n`summarise()` has grouped output by 'manufacturer'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 147 × 4\n# Groups:   manufacturer [35]\n   manufacturer                  model       count avg_age\n   <chr>                         <chr>       <int>   <dbl>\n 1 BOEING                        737-7H4       361    18.1\n 2 BOMBARDIER INC                CL-600-2B19   162    19.3\n 3 AIRBUS                        A320-232      129    16.3\n 4 AIRBUS INDUSTRIE              A320-232      127    23.9\n 5 BOMBARDIER INC                CL-600-2D24   123    14.9\n 6 BOEING                        737-824       122    19.4\n 7 EMBRAER                       EMB-145LR     114    21.6\n 8 BOEING                        737-3H4       105    27.6\n 9 EMBRAER                       EMB-145XR     104    18.4\n10 MCDONNELL DOUGLAS AIRCRAFT CO MD-88         103    32.3\n# … with 137 more rows"
+  },
+  {
+    "objectID": "shiny_assignment.html",
+    "href": "shiny_assignment.html",
+    "title": "3  Shiny Assignment",
+    "section": "",
+    "text": "Let’s invoke the libraries we need in this pre-process\nBefore creating dashboard, let’s read and fix the datasets."
+  },
+  {
+    "objectID": "shiny_assignment.html#shinyapps.io",
+    "href": "shiny_assignment.html#shinyapps.io",
+    "title": "3  Shiny Assignment",
+    "section": "3.1 Shinyapps.io",
+    "text": "3.1 Shinyapps.io\nhttps://ali-gokmen.shinyapps.io/First_Shiny_App/\n\nshiny::runGitHub(repo = \"pjournal/mef06-ali-gokmen\",subdir=\"/Shiny\")"
   }
 ]

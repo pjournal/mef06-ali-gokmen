@@ -1,26 +1,26 @@
 {
-    "id": "D7EF443D",
-    "path": "~/GitHub/mef06-ali-gokmen/in_class_exercise_1.qmd",
-    "project_path": "in_class_exercise_1.qmd",
-    "type": "quarto_markdown",
+    "id": "00597BB7",
+    "path": "~/GitHub/mef06-ali-gokmen/_quarto.yml",
+    "project_path": "_quarto.yml",
+    "type": "yaml",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1670099117828.0,
+    "created": 1670100437685.0,
     "source_on_save": false,
     "relative_order": 3,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "28,22",
-        "scrollLine": "14"
+        "cursorPosition": "11,26",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1666375167,
+    "lastKnownWriteTime": 1670100454,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1666375167,
+    "last_content_update": 1670100454627,
     "read_only": false,
     "read_only_alternatives": []
 }

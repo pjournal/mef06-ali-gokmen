@@ -5,19 +5,35 @@ date: 2022-12-03
 format: 
   html:
     toc: true
+    code-summary: "Show the code"
 ---
 
-Let's invoke the libraries we need in this exercise.
 
-```{r}
-library(dplyr)
+<style>
+    body { 
+    font-family: Calibri;
+    text-align: justify;
+    font-size: 11pt;
+    div.hidecode + pre {display: none}
+    }
+</style>
+
+<div class="hidecode">
+```{r setup, output=FALSE,echo=FALSE,warning = FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+Sys.setlocale(locale = "en_US.UTF-8")
+options(dplyr.summarise.inform = FALSE)
+```
+</div>
+
+Let's invoke the libraries we need in this pre-process
+
+```{r,output=FALSE, warning=FALSE}
 library(readxl)
 library(tidyr)
-library(ggplot2)
-library(reshape)
 library(tidyverse)
-library(scales)
 library(shiny)
+
 ```
 
 Before creating dashboard, let's read and fix the datasets.
@@ -37,8 +53,6 @@ students <- na.omit(students)
 students <- students %>% mutate(`female` = as.numeric(`female`))
 students <- students %>% mutate(`male` = as.numeric(`male`))
 students <- students %>% mutate(`total` = as.numeric(`total`))
-
-students
 ```
 
 ## Shinyapps.io

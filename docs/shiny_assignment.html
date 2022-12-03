@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ali Gökmen">
-<meta name="dcterms.date" content="2022-10-21">
+<meta name="dcterms.date" content="2022-12-03">
 
-<title>Ali Gokmen / Peace &amp; Trust Progress Journal - 2&nbsp; In Class Exercise 1</title>
+<title>Ali Gokmen / Peace &amp; Trust Progress Journal - 3&nbsp; Shiny Assignment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,8 +95,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./shiny_assignment.html" rel="next">
-<link href="./assignment1.html" rel="prev">
+<link href="./in_class_exercise_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">In Class Exercise 1</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shiny Assignment</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -188,12 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in_class_exercise_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">In Class Exercise 1</span></a>
+  <a href="./in_class_exercise_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">In Class Exercise 1</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny_assignment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shiny Assignment</span></a>
+  <a href="./shiny_assignment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shiny Assignment</span></a>
   </div>
 </li>
     </ul>
@@ -205,8 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-number-of-planes-having-turbo-jet-engine-by-manufacturer" id="toc-the-number-of-planes-having-turbo-jet-engine-by-manufacturer" class="nav-link active" data-scroll-target="#the-number-of-planes-having-turbo-jet-engine-by-manufacturer"><span class="toc-section-number">2.1</span>  The number of planes having Turbo-jet engine by manufacturer</a></li>
-  <li><a href="#the-number-of-planes-with-age-and-manufacturer-detail" id="toc-the-number-of-planes-with-age-and-manufacturer-detail" class="nav-link" data-scroll-target="#the-number-of-planes-with-age-and-manufacturer-detail"><span class="toc-section-number">2.2</span>  The number of planes with age and manufacturer detail</a></li>
+  <li><a href="#shinyapps.io" id="toc-shinyapps.io" class="nav-link active" data-scroll-target="#shinyapps.io"><span class="toc-section-number">3.1</span>  Shinyapps.io</a></li>
   </ul>
 </nav>
     </div>
@@ -215,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">In Class Exercise 1</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shiny Assignment</span></h1>
 </div>
 
 
@@ -232,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 21, 2022</p>
+      <p class="date">December 3, 2022</p>
     </div>
   </div>
     
@@ -241,97 +239,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Let’s invoke the libraries we need in this exercise.</p>
+<style>
+    body { 
+    font-family: Calibri;
+    text-align: justify;
+    font-size: 11pt;
+    div.hidecode + pre {display: none}
+    }
+</style>
+<div class="hidecode">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.3.6      ✔ purrr   0.3.5 
-✔ tibble  3.1.8      ✔ dplyr   1.0.10
-✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-✔ readr   2.1.3      ✔ forcats 0.5.2 
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
+
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Before analysis, let’s take a look what we have in the dataset.</p>
+<p>Let’s invoke the libraries we need in this pre-process</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(planes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before creating dashboard, let’s read and fix the datasets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Shiny/foreign_students.xlsx"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(students, <span class="at">file =</span> <span class="st">"students.rds"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"students.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 3,322
-Columns: 9
-$ tailnum      &lt;chr&gt; "N10156", "N102UW", "N103US", "N104UW", "N10575", "N105UW…
-$ year         &lt;int&gt; 2004, 1998, 1999, 1999, 2002, 1999, 1999, 1999, 1999, 199…
-$ type         &lt;chr&gt; "Fixed wing multi engine", "Fixed wing multi engine", "Fi…
-$ manufacturer &lt;chr&gt; "EMBRAER", "AIRBUS INDUSTRIE", "AIRBUS INDUSTRIE", "AIRBU…
-$ model        &lt;chr&gt; "EMB-145XR", "A320-214", "A320-214", "A320-214", "EMB-145…
-$ engines      &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
-$ seats        &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 5…
-$ speed        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ engine       &lt;chr&gt; "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turb…</code></pre>
+<pre><code># A tibble: 10,461 × 7
+   `Üniversite Adı`          `Üniversite Türü` `İl Adı` Uyruk  E     K     T    
+   &lt;chr&gt;                     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+ 1 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  AFGAN… 1     0     1    
+ 2 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  ALMAN… 1     0     1    
+ 3 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  ARNAV… 0     1     1    
+ 4 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  AZERB… 8     2     10   
+ 5 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  BANGL… 4     3     7    
+ 6 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  BOTSV… 1     0     1    
+ 7 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  BURKİ… 1     0     1    
+ 8 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  BÜYÜK… 1     1     2    
+ 9 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  CEZAY… 1     2     3    
+10 ABDULLAH GÜL ÜNİVERSİTESİ DEVLET            KAYSERİ  CİBUT… 1     0     1    
+# … with 10,451 more rows</code></pre>
 </div>
 </div>
-<section id="the-number-of-planes-having-turbo-jet-engine-by-manufacturer" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="the-number-of-planes-having-turbo-jet-engine-by-manufacturer"><span class="header-section-number">2.1</span> The number of planes having Turbo-jet engine by manufacturer</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>planes<span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(engine <span class="sc">==</span> <span class="st">"Turbo-jet"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,model,engine)<span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count=</span><span class="fu">n</span>())<span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'manufacturer', 'model'. You can override
-using the `.groups` argument.</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>new_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"university"</span>,<span class="st">"type"</span>,<span class="st">"province"</span>,<span class="st">"nationality"</span>,<span class="st">"male"</span>,<span class="st">"female"</span>,<span class="st">"total"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(students) <span class="ot">&lt;-</span> new_cols</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(students)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> students <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="st">`</span><span class="at">female</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">female</span><span class="st">`</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> students <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="st">`</span><span class="at">male</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">male</span><span class="st">`</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> students <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="st">`</span><span class="at">total</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">total</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 41 × 4
-# Groups:   manufacturer, model [41]
-   manufacturer      model    engine    count
-   &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt;
- 1 BOEING            757-222  Turbo-jet    80
- 2 BOEING            737-832  Turbo-jet    71
- 3 AIRBUS INDUSTRIE  A319-131 Turbo-jet    50
- 4 BOEING            757-224  Turbo-jet    41
- 5 BOEING            737-724  Turbo-jet    32
- 6 BOEING            757-251  Turbo-jet    29
- 7 AIRBUS INDUSTRIE  A320-211 Turbo-jet    25
- 8 AIRBUS INDUSTRIE  A321-211 Turbo-jet    25
- 9 MCDONNELL DOUGLAS MD-90-30 Turbo-jet    21
-10 AIRBUS INDUSTRIE  A319-132 Turbo-jet    20
-# … with 31 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="the-number-of-planes-with-age-and-manufacturer-detail" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="the-number-of-planes-with-age-and-manufacturer-detail"><span class="header-section-number">2.2</span> The number of planes with age and manufacturer detail</h2>
+<section id="shinyapps.io" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="shinyapps.io"><span class="header-section-number">3.1</span> Shinyapps.io</h2>
+<p><a href="https://ali-gokmen.shinyapps.io/First_Shiny_App/" class="uri">https://ali-gokmen.shinyapps.io/First_Shiny_App/</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>planes<span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,model) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count=</span><span class="fu">n</span>(),<span class="at">avg_age =</span> <span class="fu">mean</span>(<span class="dv">2022</span><span class="sc">-</span>year, <span class="at">na.rm =</span> T))<span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count), avg_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'manufacturer'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 147 × 4
-# Groups:   manufacturer [35]
-   manufacturer                  model       count avg_age
-   &lt;chr&gt;                         &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt;
- 1 BOEING                        737-7H4       361    18.1
- 2 BOMBARDIER INC                CL-600-2B19   162    19.3
- 3 AIRBUS                        A320-232      129    16.3
- 4 AIRBUS INDUSTRIE              A320-232      127    23.9
- 5 BOMBARDIER INC                CL-600-2D24   123    14.9
- 6 BOEING                        737-824       122    19.4
- 7 EMBRAER                       EMB-145LR     114    21.6
- 8 BOEING                        737-3H4       105    27.6
- 9 EMBRAER                       EMB-145XR     104    18.4
-10 MCDONNELL DOUGLAS AIRCRAFT CO MD-88         103    32.3
-# … with 137 more rows</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="at">repo =</span> <span class="st">"pjournal/mef06-ali-gokmen"</span>,<span class="at">subdir=</span><span class="st">"/Shiny"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -438,14 +402,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./assignment1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assignment 1</span></span>
+      <a href="./in_class_exercise_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">In Class Exercise 1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./shiny_assignment.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shiny Assignment</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
