@@ -1,0 +1,6 @@
+"0","rates <- trdata %>%"
+"0","  select(Region, Year, RateOfFreight,RateOfBaggage,RateOfMail) %>%"
+"0","  arrange(desc(Year))"
+"0",""
+"0",""
+"0","knitr::kable(head(rates,20),caption = ""Rates of Freight, Baggage and Mail in Türkiye 2021"")"

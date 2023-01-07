@@ -1,0 +1,6 @@
+"0","ggplot(data=df, aes(x=year, y=TotalAgricultureDecare)) +"
+"0","  geom_line() + "
+"0","  ylim(220000000,max(df$TotalAgricultureDecare))+"
+"0","  ggtitle(""Agricultural Areas Between 2010-2021 in Turkey"")+"
+"0","  ylab(""Agricultural Area (Decare)"")+"
+"0","  xlab(""Year"")"

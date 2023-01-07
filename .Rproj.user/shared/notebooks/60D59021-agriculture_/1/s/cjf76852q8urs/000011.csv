@@ -1,0 +1,3 @@
+"0","rmarkdown::render(""input.Rmd"", output_format = ""pdf_document"")"
+"2","Error in abs_path(input) : The file 'input.Rmd' does not exist.
+"

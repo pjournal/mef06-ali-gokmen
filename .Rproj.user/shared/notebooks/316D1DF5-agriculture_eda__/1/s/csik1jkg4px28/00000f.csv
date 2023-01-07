@@ -1,0 +1,7 @@
+"0",""
+"0","df_area_to_ag <- turkey_tarim_area_21 %>%"
+"0","  group_by(province) %>%"
+"0","  summarise(Agricultural_Area,Density = Agricultural_Area*0.001/Area ) %>%"
+"0","  arrange(desc(Density))"
+"0",""
+"0","knitr::kable(head(df_area_to_ag,10),caption = ""Density of Agricultural Areas (Agricultural Area/Area) in 2021 - Top 10 Province"")"

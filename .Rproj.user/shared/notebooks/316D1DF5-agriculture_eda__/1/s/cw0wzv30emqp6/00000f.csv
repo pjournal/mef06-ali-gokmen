@@ -1,0 +1,5 @@
+"0","df_1 <- df_1 %>%"
+"0","  mutate(difference = (decare-prev_decare))%>%"
+"0","  arrange(desc(-1*difference))"
+"0",""
+"0","head(df_1)"

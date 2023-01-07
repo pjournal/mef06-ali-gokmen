@@ -1,0 +1,6 @@
+"0","df_r<- merge(x=tarim,y=regions,by=""province"",all.x = TRUE)"
+"0","df_region<- df_r%>% select(region,year,decare) %>% "
+"0","                        group_by(region,year) %>% "
+"0","                          summarise(Total_Agriarea_in_the_Region=sum(decare))"
+"2","`summarise()` has grouped output by 'region'. You can override using the `.groups` argument."
+"0","df_region %>% head()                      "

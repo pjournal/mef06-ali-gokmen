@@ -1,0 +1,8 @@
+"0",""
+"0","tarim <- separate(data = tarim, col = province, into = c(""province"", ""province_code""), sep = ""-"")"
+"0",""
+"0","tahil <- separate(data = tahil, col = province, into = c(""province"", ""province_code""), sep = ""-"")"
+"0",""
+"0","meyve <- separate(data = meyve, col = province, into = c(""province"", ""province_code""), sep = ""-"")"
+"0",""
+"0","sebze <- separate(data = sebze, col = province, into = c(""province"", ""province_code""), sep = ""-"")"

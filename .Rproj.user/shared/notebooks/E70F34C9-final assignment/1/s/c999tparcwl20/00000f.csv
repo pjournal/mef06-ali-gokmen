@@ -1,0 +1,7 @@
+"0","ggplot(trdata, aes(Year)) +"
+"0","  geom_line(aes(Year, y=Total_Baggage, color = ""Baggage"")) +"
+"0","  geom_line(aes(Year, y=Total_Freight, color = ""Freight"")) +"
+"0","  theme(legend.position = ""bottom"") +"
+"0","  ylab(""Total Tonnage"") +"
+"0","  xlab(""Years"") +"
+"0","  ggtitle(""Total Carried Baggage and Cargo in Türkiye"")"

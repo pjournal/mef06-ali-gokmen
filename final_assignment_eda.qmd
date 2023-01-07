@@ -1,0 +1,41 @@
+---
+title: "In Class Exercise 1"
+author: "Ali Gökmen"
+date: 2022-10-21
+format: 
+  html:
+    toc: true
+---
+
+
+```{r call_libraries, warning=  FALSE,  message = FALSE}
+library(plotly)
+library(readxl)
+library(lubridate)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(tidyr)
+library(ggrepel)
+```
+
+## Load the Data
+```{r}
+# Prepare data
+fre_car = read_excel("data//fre_carried.xlsx")
+saveRDS(fre_car, file = "data//fre_car.rds")
+fre_car$Total_Freight_All <- as.numeric(fre_car$Total_Freight_All)
+fre_car$Total_Freight <- as.numeric(fre_car$Total_Freight)
+fre_car$Total_Baggage <- as.numeric(fre_car$Total_Baggage)
+fre_car$Total_Mail <- as.numeric(fre_car$Total_Mail)
+```
+
+```{r}
+fre_car %>%
+  group_by(Region,Year) %>%
+  summarise(Total_Freight_All, Mail_Perc = Total_Mail/Total_Freight_All)
+
+```
+
+
+

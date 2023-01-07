@@ -1,0 +1,260 @@
+---
+title: "Group Project: Agriculture in Turkey - Preprocessing"
+date: "19 November 2022"
+title-block-banner: "#008000"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-float: true
+    number-sections: false
+---
+
+```{=html}
+<style>
+    body { 
+    font-family: Calibri;
+    text-align: justify;
+    font-size: 11pt;
+    div.hidecode + pre {display: none}
+    }
+</style>
+```
+::: hidecode
+```{r setup, output=FALSE,echo=FALSE,warning = FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+Sys.setlocale(locale = "en_US.UTF-8")
+options(dplyr.summarise.inform = FALSE)
+```
+:::
+
+## BUSINESS PROBLEM 
+
+Agricultural production plays a key role in the independence and development of a country. In this project, we aim to analyze the changes in our agricultural production areas and products over the years and obtain output in Turkey.
+
+## DATA DESCRIPTION 
+
+Data is gathered from [TUIK Agriculture Data](https://biruni.tuik.gov.tr/medas/?kn=92&locale=tr)
+
+There are various different types of Agriculture data in TUIK. Datasets that we will use are:
+
+* [12-year agricultural area by province](https://github.com/pjournal/mef06g-peace-trust/raw/main/project/data/tarım.xlsx)
+* [12-year grain production by province](https://github.com/pjournal/mef06g-peace-trust/raw/main/project/data/tahıl.xlsx)
+* [12-year vegetable production by province](https://github.com/pjournal/mef06g-peace-trust/raw/main/project/data/sebze.xlsx)
+* [12-year fruit production by province](https://github.com/pjournal/mef06g-peace-trust/raw/main/project/data/meyve.xlsx)
+
+## PREPROCESS
+
+#### Call necessary libraries
+
+```{r call_libraries, warning=  FALSE,  message = FALSE}
+#install.packages("readxl")
+library(readxl)
+library(lubridate)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(tidyr)
+```
+
+#### Load the TUIK data sets
+
+```{r load_data, warning = FALSE}
+tarim_raw = read_excel("data//tarım.xlsx")
+tahil_raw = read_excel("data//tahıl.xlsx")
+sebze_raw = read_excel("data//sebze.xlsx")
+meyve_raw = read_excel("data//meyve.xlsx")
+```
+
+
+#### View the raw data
+
+```{r }
+knitr::kable(head(tarim_raw),caption = "12-year agricultural area by province")
+```
+
+```{r }
+knitr::kable(head(tahil_raw),caption = "12-year grain production by province")
+```
+
+```{r }
+knitr::kable(head(sebze_raw),caption = "12-year vegetable production by province")
+```
+
+```{r }
+knitr::kable(head(meyve_raw),caption = "12-year agricultural area by province")
+```
+
+#### Fix the column names
+
+```{r fixing_column_names, warning = FALSE}
+new_cols <- c("province","year","decare")
+colnames(tarim_raw) <- new_cols
+tarim <-tarim_raw
+new_cols <- c("vegetable_type","province","year","decare")
+colnames(sebze_raw) <- new_cols
+new_cols <- c("grain_type","province","year","decare")
+colnames(tahil_raw) <- new_cols
+```
+
+#### Transform Meyve Dataset
+
+```{r}
+meyve <- meyve_raw %>% pivot_longer(cols = 'Adana-1':'Şırnak-73', names_to = 'province',
+         values_to = 'production') 
+meyve
+```
+**Rename the meyve dataset columns**
+
+```{r}
+new_cols <- c("fruit_type","year","province","production")
+colnames(meyve) <- new_cols
+```
+
+#### Separate the Columns
+
+**Separate Product name and product types**
+```{r}
+tahil_v1 <- separate(data = tahil_raw, col = grain_type, into = c("main_type", "product_type"), sep = " ve ")
+
+tahil <- separate(data = tahil_v1, col = product_type, into = c("product_type", "unit"), sep = "-")
+
+tahil <- separate(tahil, product_type, into = c("product_code", "product_name"), sep = "^\\S*\\K\\s+")
+
+sebze_v1 <- separate(data = sebze_raw, col = vegetable_type, into = c("main_type", "product_type"), sep = " ve ")
+
+sebze <- separate(data = sebze_v1, col = product_type, into = c("product_type", "unit"), sep = "-")
+
+sebze <-separate(sebze, product_type, into = c("product_code", "product_name"), sep = "^\\S*\\K\\s+")
+
+meyve_v1 <- separate(data = meyve, col = fruit_type, into = c("main_type", "product_type"), sep = " ve ")
+
+meyve <- separate(data = meyve_v1, col = product_type, into = c("product_type", "unit"), sep = "-")
+
+meyve <-separate(meyve, product_type, into = c("product_code", "product_name"), sep = "^\\S*\\K\\s+")
+
+```
+
+**Separate province names and province codes**
+
+```{r}
+
+tarim <- separate(data = tarim, col = province, into = c("province", "province_code"), sep = "-")
+
+tahil <- separate(data = tahil, col = province, into = c("province", "province_code"), sep = "-")
+
+meyve <- separate(data = meyve, col = province, into = c("province", "province_code"), sep = "-")
+
+sebze <- separate(data = sebze, col = province, into = c("province", "province_code"), sep = "-")
+```
+
+**Remove paranthesis characters from product_name columns**
+
+```{r}
+
+tahil$product_name <- gsub("[()]", "", tahil$product_name)
+meyve$product_name <- gsub("[()]", "", meyve$product_name)
+sebze$product_name <- gsub("[()]", "", sebze$product_name)
+
+```
+**Remove spaces at the beginning and at the end of the "unit" column**
+```{r}
+tahil$unit = str_trim(tahil$unit)
+sebze$unit = str_trim(sebze$unit)
+meyve$unit = str_trim(meyve$unit)
+```
+
+#### Check the Data Types
+
+view the data types
+```{r}
+str(tarim)
+
+```
+```{r}
+str(sebze)
+```
+
+```{r}
+str(sebze)
+
+```
+
+```{r}
+str(meyve)
+
+```
+
+#### Convert the Data Types
+
+**Convert Year column to Date type**
+
+```{r}
+tarim$year <- year(as.Date(tarim$year, format = "%Y"))
+tahil$year <- year(as.Date(tahil$year, format = "%Y"))
+meyve$year <- year(as.Date(meyve$year, format = "%Y"))
+sebze$year <- year(as.Date(sebze$year, format = "%Y"))
+```
+
+#### Check Missing values
+
+```{r}
+sum(is.na(tarim))
+```
+```{r}
+sum(is.na(tahil));
+```
+```{r}
+sum(is.na(meyve))
+```
+```{r}
+sum(is.na(sebze))
+```
+**If we remove the NAs, we may miss the provinces where some agriculture products are not produced/ or TUIK cannot get any information. So we first check whether there are 0 values**
+
+```{r}
+tahil %>%
+  filter(decare==0)
+```
+**As it is seen from above there are 0 values, so we cannot sure what NA means in this dataset, so we will leave as it is.**
+
+
+#### View the Datasets
+
+```{r }
+knitr::kable(head(tarim),caption = "12-year agricultural area by province")
+```
+
+```{r }
+knitr::kable(head(meyve,caption = "12-year fruit production by province"))
+```
+
+
+```{r }
+knitr::kable(head(sebze),caption = "12-year vegetable production by province")
+```
+
+```{r }
+knitr::kable(head(tahil),caption = "12-year grain production by province")
+```
+#### Save the final datasets
+
+```{r}
+saveRDS(tarim, file = "data//tarim.rds")
+saveRDS(tahil, file ="data//tahil.rds")
+saveRDS(meyve, file ="data//meyve.rds")
+saveRDS(sebze, file ="data//sebze.rds")
+
+```
+
+#### Save other datasets
+
+```{r}
+turkey = read_excel("data//turkey.xlsx")
+saveRDS(turkey, file = "data//turkey.rds")
+```
+
+```{r}
+rmarkdown::render("input.Rmd", output_format = "pdf_document")
+```
+

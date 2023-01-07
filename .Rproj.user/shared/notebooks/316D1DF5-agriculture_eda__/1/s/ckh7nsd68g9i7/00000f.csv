@@ -1,0 +1,4 @@
+"0","ggplot(data=df_region_overall,aes(x=region,y=Total_Difference,fill=region))+"
+"0","  geom_bar(position = ""dodge"",stat=""identity"")+"
+"0","  ggtitle(""Total Agriculture Area Loss by Region 2010-2021"")+"
+"0","  theme(text = element_text(size=10),element_line(size=15),axis.text.x=element_text(angle=90))"

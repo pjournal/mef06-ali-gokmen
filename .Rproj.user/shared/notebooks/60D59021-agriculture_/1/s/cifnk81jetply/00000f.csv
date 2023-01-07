@@ -1,0 +1,4 @@
+"0","tarim$year <- year(as.Date(tarim$year, format = ""%Y""))"
+"0","tahil$year <- year(as.Date(tahil$year, format = ""%Y""))"
+"0","meyve$year <- year(as.Date(meyve$year, format = ""%Y""))"
+"0","sebze$year <- year(as.Date(sebze$year, format = ""%Y""))"

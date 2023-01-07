@@ -1,0 +1,4 @@
+"0","df_region_overall <- df_region_1 %>% "
+"0","                      group_by(region) %>% "
+"0","                         summarise(""Total_Difference""=sum(difference,na.rm=TRUE),""Total_Rate""=sum(difference_rate,na.rm = TRUE)) %>%                             arrange(Total_Rate)"
+"0","knitr::kable(df_region_overall,caption = ""Total Agriculre Lost Areas by Region 2010-2021"")"

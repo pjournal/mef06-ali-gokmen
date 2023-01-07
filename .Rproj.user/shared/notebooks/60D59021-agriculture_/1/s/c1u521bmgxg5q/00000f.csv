@@ -1,0 +1,2 @@
+"0","turkey = read_excel(""data//turkey.xlsx"")"
+"0","saveRDS(turkey, file = ""data//turkey.rds"")"

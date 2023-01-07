@@ -1,0 +1,7 @@
+"0",""
+"0","ggplot(head(df_ttrate,10), aes(x=province, y=-1*totaldiffrate)) +"
+"0","  geom_bar(position=""dodge"",stat=""identity"") + "
+"0","  ggtitle(""Total Agriculture Area Loss Rate by Province 2010-2021 (Top 10 Province)"") +"
+"0","  theme(axis.text.x = element_text(angle = 90)) +"
+"0","   ylab(""Agricultural Area Loss Rate(%)"")+"
+"0","   xlab(""Province"")"

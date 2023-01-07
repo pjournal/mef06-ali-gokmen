@@ -1,0 +1,4 @@
+"0","tarim_raw = read_excel(""data//tarım.xlsx"")"
+"0","tahil_raw = read_excel(""data//tahıl.xlsx"")"
+"0","sebze_raw = read_excel(""data//sebze.xlsx"")"
+"0","meyve_raw = read_excel(""data//meyve.xlsx"")"

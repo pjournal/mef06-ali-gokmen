@@ -1,0 +1,5 @@
+"0","saveRDS(tarim, file = ""data//tarim.rds"")"
+"0","saveRDS(tahil, file =""data//tahil.rds"")"
+"0","saveRDS(meyve, file =""data//meyve.rds"")"
+"0","saveRDS(sebze, file =""data//sebze.rds"")"
+"0",""

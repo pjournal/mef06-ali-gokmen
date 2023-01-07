@@ -1,0 +1,6 @@
+"0","df_region_1<- df_region %>% "
+"0","               arrange(region,year) %>% "
+"0","                group_by(region) %>% "
+"0","                 mutate(prev_decare= lag(Total_Agriarea_in_the_Region)) %>% "
+"0","                   ungroup()"
+"0","head(df_region_1)"

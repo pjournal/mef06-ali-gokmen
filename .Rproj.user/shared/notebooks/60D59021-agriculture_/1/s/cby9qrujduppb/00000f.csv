@@ -1,0 +1,5 @@
+"0",""
+"0","tahil$product_name <- gsub(""[()]"", """", tahil$product_name)"
+"0","meyve$product_name <- gsub(""[()]"", """", meyve$product_name)"
+"0","sebze$product_name <- gsub(""[()]"", """", sebze$product_name)"
+"0",""

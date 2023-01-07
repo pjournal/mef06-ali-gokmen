@@ -1,0 +1,7 @@
+"0","new_cols <- c(""province"",""year"",""decare"")"
+"0","colnames(tarim_raw) <- new_cols"
+"0","tarim <-tarim_raw"
+"0","new_cols <- c(""vegetable_type"",""province"",""year"",""decare"")"
+"0","colnames(sebze_raw) <- new_cols"
+"0","new_cols <- c(""grain_type"",""province"",""year"",""decare"")"
+"0","colnames(tahil_raw) <- new_cols"

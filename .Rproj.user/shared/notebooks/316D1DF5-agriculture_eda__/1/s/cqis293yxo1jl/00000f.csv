@@ -1,0 +1,6 @@
+"0","p <- plot_ly(plot_data, labels = ~product_name, values = ~TotalbyName, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%"
+"0","  layout(title = 'Top 10 Fruit Products (in Decare) in Turkey  in 2021',"
+"0","         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),"
+"0","         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))"
+"0",""
+"0","p"

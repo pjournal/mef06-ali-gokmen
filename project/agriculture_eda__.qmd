@@ -1,0 +1,570 @@
+---
+title: "Group Project: Agriculture in Turkey - EDA"
+date: "3 December 2022"
+title-block-banner: "#008000"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-float: true
+    number-sections: false
+---
+
+![](tarim.jpg)
+
+```{=html}
+<style>
+    body { 
+    font-family: Calibri;
+    text-align: justify;
+    font-size: 11pt;
+    div.hidecode + pre {display: none}
+    }
+</style>
+```
+::: hidecode
+```{r setup, output=FALSE,echo=FALSE,warning = FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+Sys.setlocale(locale = "en_US.UTF-8")
+options(dplyr.summarise.inform = FALSE)
+options(scipen=999)
+```
+:::
+
+Agriculture in Turkey - EDA is the part 2 of the Group Project: Agriculture in Turkey
+
+
+
+## KEY TAKEAWAYS
+
+Key takeaways of the report as follows;
+
+1. According to TUIK agricultural area datas, Konya, Ankara and Şanlıurfa  are top 3 cities having greatest agricultural areas. Konya alone has %8 of agricultural areas of Turkey. Kilis has the most dense agricultural area, comparing to its total area, %71 of the city is agricultural.
+
+2. In Turkey, **9.213.278 decare** (9213,28 km2) agricultural areas is lost in last 12 years, first improvement since 2011 was in 2020, “the pandemic year” but in general in 12 years, size of the agricultural areas moving downwards. 
+
+3. Eastern part of the Turkey loss agricultural land at the highest rate in the first years of decade, **“Büyüksehir Yasası”** that enacted in the 2012 can be cause of this situation
+
+4. Yearly Grain/Fruit/Vegetable Production Areas is examined; we find that, increase in the agricultural areas after 2019 due to fruit (mostly nuts) and grain production.
+
+5. **Increase in average temperature in Turkey in 2018, also coincides with the decrease in Agricultural area in that year**. We could not observe a clear relation between CO2 emission and agricultural area loss in Turkey. We find out that there is a complex relationship between agricultural loss and CO2 emissions. 
+
+
+We start by  loading our dataset that we prepare in the **Group Project: Agriculture in Turkey - Preprocessing**
+
+
+
+#### Call necessary libraries
+
+```{r call_libraries, warning=  FALSE,  message = FALSE}
+#install.packages("readxl")
+#install.packages("ggrepel")
+#install.packages("plotly")
+library(plotly)
+library(readxl)
+library(lubridate)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(tidyr)
+library(ggrepel)
+```
+
+
+## Load the Data
+```{r}
+# Prepare data
+tarim <- readRDS("data//tarim.rds")
+meyve <- readRDS("data//meyve.rds")
+sebze <- readRDS("data//sebze.rds")
+tahil <- readRDS("data//tahil.rds")
+regions <- readRDS("data//Regions.rds")
+turkey <- readRDS("data//turkey.rds")
+```
+
+## Total Agriculture Areas 
+
+```{r}
+total_2021_area <- tarim %>%
+  filter(year==2021)%>%
+  group_by(year)%>%
+  summarise(TotalArea=sum(decare))
+
+Total_Agricultural_Area <- total_2021_area$TotalArea
+
+
+df_province <- tarim %>%
+  filter(year==2021)%>%
+  group_by(province_code,province) %>%
+  summarise(Agricultural_Area=sum(decare),Total_Agricultural_Area,AgrRatetoTotalAgr=round(Agricultural_Area/Total_Agricultural_Area,2))%>%
+  arrange(desc(AgrRatetoTotalAgr)) 
+
+knitr::kable(head(df_province,10),caption = "Total Agricultural Areas (in Decare) in Turkey 2021 - Top 10 Province")
+
+```
+## Density of Agriculture Areas 
+
+To find how dense are the cities in terms of agriculture, we must find total areas of each cities, I used [Wikipedia](https://en.wikipedia.org/wiki/Provinces_of_Turkey) as a data source,
+First 5 columns are from Wikipedia, geographic locations of each city is taken with geopy library pf Pyhton, and also it's important to mention that Area is in km2.
+
+```{r}
+head(turkey)
+```
+
+Join the turkey dataframe with turkey_tarim_area_21, Area is in km2 and Total_Province_Area is in Decare,
+```{r}
+turkey_tarim_area_21 = merge(turkey, df_province, by.x = 'Code', by.y = 'province_code')
+head(turkey_tarim_area_21)
+```
+**Kilis** is the most dense city in terms of agricultural areas,
+```{r}
+
+df_area_to_ag <- turkey_tarim_area_21 %>%
+  group_by(province) %>%
+  summarise(Agricultural_Area,Density = Agricultural_Area*0.001/Area ) %>%
+  arrange(desc(Density))
+
+knitr::kable(head(df_area_to_ag,10),caption = "Density of Agricultural Areas (Agricultural Area/Area) in 2021 - Top 10 Province")
+```
+Now, lets plot the agricultural areas of Turkish cities in 2021, both size corresponds to total agricultural areas in 2021 and color corresponds to density of Agricultural Areas.
+
+```{r}
+# Plot the Turkey province data
+# Extract the data we're interested in
+ggplot(data = turkey_tarim_area_21) +
+  geom_point(aes(x = Longitude, y =Latitude ,
+                 color = -log10((Agricultural_Area*0.001/Area)*100),
+                 size = Agricultural_Area,
+                 label = Name), alpha = 0.6) +
+  scale_size(name = "Agricultural Area",
+             range = c(5, 15)) +
+  theme(legend.position = "up") +
+  labs(x = "longitude",
+       y = "latitude",
+       title = "Turkey: Agricultural Areas") +
+  geom_text(aes(x =Longitude , y =  Latitude, label = Name)) 
+
+```
+
+### Agriculture areas are shrinking slightly
+
+```{r}
+df <- tarim %>%
+  group_by(year) %>%
+  summarise(TotalAgricultureDecare=sum(decare)) %>%
+  arrange(year) %>%
+  mutate(prev=lag(TotalAgricultureDecare)) %>%
+  mutate(diff =TotalAgricultureDecare-prev ) %>%
+  mutate(totalloss= sum(diff, na.rm=TRUE))
+  
+df
+
+```
+```{r}
+ggplot(data=df, aes(x=year, y=TotalAgricultureDecare)) +
+  geom_line() + 
+  ylim(220000000,max(df$TotalAgricultureDecare))+
+  ggtitle("Agricultural Areas Between 2010-2021 in Turkey")+
+  ylab("Agricultural Area (Decare)")+
+  xlab("Year")
+```
+Between 2010-2011, biggest agricultural area lost is happened. In 2011-2015, it seems to be good years for Agriculture in terms of magnitude of the areas.
+However, after 2015, general trend moves towards to losing the Agricultural areas, after 2019 there seems to be first improvement, interestingly first improvement is in 2020, "the pandemic year" but in general in 11 years, size of the agricultural areas moving downwards.
+
+### Yearly agriculture areas 
+
+#### By Province
+
+Add previous decares to the dataframe
+```{r}
+df_1 <- tarim %>% 
+  arrange(province, year) %>% 
+  group_by(province) %>% 
+  mutate(prev_decare = lag(decare)) %>% 
+  ungroup()
+head(df_1)
+```
+If we look at year by year lost, the biggest lost was in **Sivas**, **2011** with **2.290.480** decare loss.
+Second is Kars with 1.628.918, third is Konya with 1.526.849. However, Konya's total agriculture areas are greater than others. Rate of yearly difference and decare will be another indicator.
+
+```{r}
+df_1 <- df_1 %>%
+  mutate(difference = (decare-prev_decare))%>%
+  arrange(desc(-1*difference))
+
+head(df_1)
+```
+If we sort according to rate of difference **Ardahan**,**2014** is the first with **0.44**, Kars,2013 with 0.43 and Karabük,2018 with 0.32 are the second and third in terms of yearly agriculture area lost. 
+```{r}
+df_1 <- df_1 %>%
+  mutate(difference_rate = round(difference/prev_decare,2))%>%
+  arrange((difference_rate))
+
+
+head(df_1)
+```
+Interestingly, yearly loss is greater in the first half of the decade, but overall loss is increasing year by year, let's visualise this by adding cumulative loss column.
+
+If we look at total lost, Şanlıurda, Konya ans Sivas are the three big cities
+```{r}
+df_p <- df_1 %>%
+  group_by(province) %>%
+  summarise('TotalDifference'=sum(difference, na.rm=TRUE),'TotalRate'=sum(difference_rate, na.rm=TRUE)) %>%
+  arrange(TotalDifference)
+
+knitr::kable(head(df_p),caption = "Total Agriculture Lost Areas by Province 2010-2021")
+
+```
+```{r}
+
+df_p <- df_p %>%
+  arrange(TotalDifference) %>%
+  mutate(TotalDifference=TotalDifference*-1)
+
+ggplot(data=head(df_p,10), aes(x=province, y=TotalDifference)) +
+  geom_bar(position="dodge",stat="identity") + 
+  ggtitle("Total Agriculture Area Loss by Province 2010-2021 - Top 10 Province") +
+  theme(text = element_text(size = 10),element_line(size =15),axis.text.x = element_text(angle = 90))+ 
+  xlab("Province") + 
+  ylab("Lost Agricultural Area (Decare)") 
+
+
+```
+**Zonguldak lost 35% of its agricultural areas in 12 years**
+
+```{r}
+df_2010 <- df_1 %>% 
+  filter(year == 2010) %>%
+  select(province,year,decare)
+
+df_2021 <- df_1 %>% 
+  filter(year == 2021) %>%
+  select(province,year,decare)
+
+df_join <- inner_join(df_2010,df_2021, by = "province")
+
+df_ttrate <- df_join %>%
+  mutate(totaldiffrate = 100*(decare.y-decare.x)/decare.x) %>%
+  arrange((totaldiffrate)) %>%
+  select (province,totaldiffrate )
+
+knitr::kable(head(df_ttrate),caption = "Total Agricultural Area Loss Rate by Province 2010-2021")
+
+```
+
+```{r}
+
+ggplot(head(df_ttrate,10), aes(x=province, y=-1*totaldiffrate)) +
+  geom_bar(position="dodge",stat="identity") + 
+  ggtitle("Total Agriculture Area Loss Rate by Province 2010-2021 (Top 10 Province)") +
+  theme(axis.text.x = element_text(angle = 90)) +
+   ylab("Agricultural Area Loss Rate(%)")+
+   xlab("Province")
+ 
+
+
+```
+#### By Region
+Adding regions to tarim data
+```{r}
+df_r<- merge(x=tarim,y=regions,by="province",all.x = TRUE)
+df_region<- df_r%>% select(region,year,decare) %>% 
+                        group_by(region,year) %>% 
+                          summarise(Total_Agriarea_in_the_Region=sum(decare))
+df_region %>% head()                      
+```
+Add previous decares to the dataframe
+```{r}
+df_region_1<- df_region %>% 
+               arrange(region,year) %>% 
+                group_by(region) %>% 
+                 mutate(prev_decare= lag(Total_Agriarea_in_the_Region)) %>% 
+                   ungroup()
+head(df_region_1)
+```
+  If we look at year by year lost, İç Anadolu had the biggest loses in 2011 and 2017. However İç Anadolu' total agricultural lands also high as compared to other regions so looking rate of yearly difference would be good indicator to analyze.
+
+```{r}
+df_region_1 <- df_region_1 %>% 
+       mutate(difference=(Total_Agriarea_in_the_Region-prev_decare)) %>% 
+         arrange((desc(-1*difference)))
+df_region_1
+```
+Eastern part of the Turkey loss agricultural land at the highest rate in the first years of decade, "Büyüksehir Yasası" that enacted in the 2012 can be cause of this situation.
+```{r}
+df_region_1 <- df_region_1 %>% 
+          mutate(difference_rate=round(difference/prev_decare,2)) %>% 
+                   arrange((difference_rate))
+head(df_region_1)
+```
+Let's look at the overall lose between 2010-2021 by region.In this case some regions interestingly increase their agricultural lands
+```{r}
+df_region_overall <- df_region_1 %>% 
+                      group_by(region) %>% 
+                         summarise("Total_Difference"=sum(difference,na.rm=TRUE),"Total_Rate"=sum(difference_rate,na.rm = TRUE)) %>%                             arrange(Total_Rate)
+knitr::kable(df_region_overall,caption = "Total Agriculre Lost Areas by Region 2010-2021")
+```
+
+Visualization...
+
+
+```{r}
+ggplot(data=df_region_overall,aes(x=region,y=Total_Difference,fill=region))+
+  geom_bar(position = "dodge",stat="identity")+
+  ggtitle("Total Agriculture Area Loss by Region 2010-2021")+
+  theme(text = element_text(size=10),element_line(size=15),axis.text.x=element_text(angle=90))
+```
+
+
+
+### Distribution of Agricultural Production
+
+### Fruits
+
+
+```{r warning=FALSE}
+
+meyve_dekar <-
+  meyve %>% 
+  filter(year==2021 & unit=='Dekar'  & main_type=='Toplu Meyveliklerin Alanı')
+
+
+total = sum(meyve_dekar[, 'production'],na.rm=TRUE)
+
+grouped_data <- meyve_dekar %>%
+  group_by(product_name) %>%
+  summarise(TotalbyName = sum(production,na.rm=TRUE)) %>%
+  mutate(rate = round((TotalbyName/total)*100,4))
+
+plot_data <- grouped_data %>%
+  mutate(rank = rank(-TotalbyName), 
+         product_name = ifelse(rank <= 10, product_name, 'Other'))
+
+```
+
+```{r}
+p <- plot_ly(plot_data, labels = ~product_name, values = ~TotalbyName, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
+  layout(title = 'Top 10 Fruit Products (in Decare) in Turkey  in 2021',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+p
+```
+
+### Vegetables
+```{r warning=FALSE}
+
+sebze_df <- sebze %>%
+  filter(year==2021 & unit=='Dekar'  & main_type=='Ekilen Alan')
+
+total = sum(sebze_df [, 'decare'],na.rm=TRUE)
+
+grouped_data <- sebze_df %>%
+  group_by(product_name) %>%
+  summarise(TotalbyName = sum(decare,na.rm=TRUE)) %>%
+  mutate(rate = round((TotalbyName/total)*100),4)
+
+plot_data_v <- grouped_data %>%
+  mutate(rank = rank(-TotalbyName), 
+         product_name = ifelse(rank <= 10, product_name, 'Other'))
+
+```
+
+```{r}
+
+p <- plot_ly(plot_data_v, labels = ~product_name, values = ~TotalbyName, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
+  layout(title = 'Top 10 Vegetable Products (in Decare) in Turkey  in 2021',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+p
+
+```
+
+### Grain
+```{r warning=FALSE}
+tahil_df <-  tahil %>%
+  filter(year==2021 & unit=='Dekar' & main_type=='Ekilen Alan')
+
+total = sum(tahil_df[, 'decare'],na.rm=TRUE)
+
+grouped_data <- tahil_df %>%
+  group_by(product_name) %>%
+  summarise(TotalbyName = sum(decare,na.rm=TRUE)) %>%
+  mutate(rate = round((TotalbyName/total)*100),2)
+
+plot_data_g <- grouped_data %>%
+  mutate(rank = rank(-TotalbyName), 
+         product_name = ifelse(rank <= 10, product_name, 'Other'))
+
+```
+
+```{r}
+p <- plot_ly(plot_data_g, labels = ~product_name, values = ~TotalbyName, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
+  layout(title = 'Top 10 Grain Products(as Decare) in Turkey in 2021',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+p
+```
+
+### Yearly Grain/Fruit/Vegetable Production Areas 
+
+Grain production areas were decreasing until 2019, after 2019, it is increasing slightly like agricultural areas
+
+```{r}
+df_gra <- tahil %>%
+  filter(unit=='Dekar' & main_type=='Ekilen Alan') %>%
+  group_by(year)%>%
+  summarize(total_gra_decare = sum(decare, na.rm = TRUE)) 
+
+ggplot(data=df_gra, aes(x=year, y=total_gra_decare)) + 
+  geom_line() +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 3), se = FALSE) +
+  labs(x ="Year",y="Decare") +
+  ggtitle("Total Grain Agriculture Areas(Decare) Between 2010-2021")
+
+```
+Fruit production areas are increasing slightly unlike agricultural areas
+
+```{r}
+
+df_meyve <- meyve %>%
+  filter(unit=='Dekar' & main_type=='Toplu Meyveliklerin Alanı') %>%
+  group_by(year)%>%
+  summarize(total_gra_decare = sum(production, na.rm = TRUE)) 
+
+ggplot(data=df_meyve, aes(x=year, y=total_gra_decare)) + 
+  geom_line() +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 3), se = FALSE) +
+  labs(x ="Year",y="Decare") +
+  ggtitle("Total Fruit Agriculture Areas(Decare) Between 2010-2021")
+
+```
+```{r}
+meyve_sort <- meyve %>% arrange(year)
+
+meyve_analiz <- meyve_sort %>%
+  filter(unit=='Dekar'  & main_type=='Toplu Meyveliklerin Alanı') %>%
+  group_by(year,product_name)%>%
+  summarize(total_decare = sum(production, na.rm = TRUE)) %>%
+  arrange(product_name,year) %>%
+  ungroup() 
+
+
+meyve_sort_analiz <- meyve_analiz %>%
+  mutate(prev_dekar=lag(total_decare))  %>%
+  mutate(difference_with_prev_year =total_decare-prev_dekar ) %>%
+  filter(year>2010) %>%
+  arrange(desc(difference_with_prev_year))
+
+knitr::kable(head(meyve_sort_analiz),caption = "The Top Fruits in Terms of Yearly Increased Agricultural Areas ")
+
+
+```
+
+
+```{r}
+
+df_sebze <- sebze %>%
+  filter(unit=='Dekar' & main_type=='Ekilen Alan') %>%
+  group_by(year)%>%
+  summarize(total_gra_decare = sum(decare, na.rm = TRUE)) 
+
+
+ggplot(data=df_sebze, aes(x=year, y=total_gra_decare)) + 
+  geom_line() +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 3), se = FALSE) +
+  labs(x ="Year",y="Decare") +
+  ggtitle("Total Vegetable Agriculture Areas(Decare) Between 2010-2021")
+
+```
+**Above analysis show that, increase in the agricultural areas after 2019 due to fruit (mostly nuts) and grain production**
+
+## Climate Indicators and Agriculture Areas
+
+In this section we will compare the yearly average temperatures with the agriculture areas. Weather data is gathered from [TradingEconomics](https://tradingeconomics.com/turkey/temperature). 
+
+```{r}
+temperature = read_excel("data//temp.xlsx")
+
+
+df <- tarim %>%
+  group_by(year) %>%
+  summarise(TotalDecareNormalized=sum(decare)/ 20000000)
+
+
+df_t <- df %>%
+  inner_join(temperature,by = "year")
+  
+ggplot(df_t, aes(year)) + 
+  geom_line(aes(y = TotalDecareNormalized, colour = "Total Agricultural Area in Decare (1/20000000)")) + 
+  geom_line(aes(y = temperature, colour = "Temperature")) +
+  ylab(NULL) +
+  ggtitle("Average Temperature vs Total Agricultural Area") 
+```
+Increase in average temperature in Turkey in 2018, also coincides with the decrease in Agricultural area. Note that we need further statistical tests to show the relation between, this presentations only shows the raw data. However, 
+*there are evidences suggesting that rising temperatures due to climate change can have negative impacts on agriculture, including crop yields and the productivity of livestock. 
+
+
+CO2 emission is also an important metric for measuring the climate change. CO2 emissions (metric tons per capita)	Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
+
+WorldBank launches the CO2 emissions (metric tons per capita) data for every country. I used [WorldBank](CO2 emissions (metric tons per capita) )
+
+Note that, Data consists of the CO2 emission for 2009-2019
+```{r warning=FALSE}
+co2 = read_excel("data//co2.xlsx")
+
+
+df_t$year<-as.character.Date(df_t$year)
+df_t_c <- df_t %>%
+  inner_join(co2, by='year')
+
+ggplot(df_t_c, aes(year)) + 
+  geom_line(aes(y = TotalDecareNormalized, colour = "Total Decare (1/20000000)", group=1)) + 
+  geom_line(aes(y = CO2emissions, colour = "CO2 Emission(Ton Per Capita)", group=2)) +
+  geom_line(aes(y = temperature, colour = "Temperature", group=3)) +
+  ylab(NULL) +
+  ggtitle("Average Temperature, CO2 Emission and Total Agricultural Area in Turkey")  
+
+```
+
+## Most efficient Fruits in Turkey
+
+Production in kg per tree is as follows, is seems Apple is the winner here too.
+
+```{r}
+df_e <- meyve %>%
+  filter(str_trim(unit)=='Kg/Meyve Veren Ağaç')%>%
+  group_by(product_name,unit) %>%
+  summarise(toplam = sum(production, na.rm = TRUE)) %>%
+  arrange(desc(toplam))
+
+knitr::kable(head(df_e),caption = "Fruit Efficiency (KG % Per Tree)")
+```
+Let's group all fruits containing "Elma" under the Elma.
+
+```{r}
+meyve_group <- meyve
+
+meyve_group$product_name <- gsub(".*Elma.*", "Elma", meyve$product_name)
+
+
+df_elma <- meyve_group %>%
+  filter(str_trim(unit)=='Kg/Meyve Veren Ağaç')%>%
+  group_by(year,product_name,unit) %>%
+  summarise(toplam = sum(production, na.rm = TRUE)) %>%
+  arrange(year,desc(toplam)) 
+df_elma
+```
+
+```{r}
+
+ggplot(data=df_elma, aes(x=product_name, y=toplam)) +
+  geom_bar(position="dodge",stat="identity") + 
+  ggtitle("Fruit Efficiency (KG % Per Tree)") +
+  theme(text = element_text(size = 10),element_line(size =15),axis.text.x = element_text(angle = 90))
+
+```
+
+

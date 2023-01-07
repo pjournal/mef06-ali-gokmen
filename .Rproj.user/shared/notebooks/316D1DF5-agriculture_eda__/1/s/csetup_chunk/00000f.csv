@@ -1,0 +1,8 @@
+"0","knitr::opts_chunk$set(warning = FALSE)"
+"0","Sys.setlocale(locale = ""en_US.UTF-8"")"
+"1","[1]"
+"1"," ""LC_COLLATE=en_US.UTF-8;LC_CTYPE=en_US.UTF-8;LC_MONETARY=en_US.UTF-8;LC_NUMERIC=C;LC_TIME=en_US.UTF-8"""
+"1","
+"
+"0","options(dplyr.summarise.inform = FALSE)"
+"0","options(scipen=999)"

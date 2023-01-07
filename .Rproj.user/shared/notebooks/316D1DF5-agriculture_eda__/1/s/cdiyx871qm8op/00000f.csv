@@ -1,0 +1,6 @@
+"0","df_1 <- tarim %>% "
+"0","  arrange(province, year) %>% "
+"0","  group_by(province) %>% "
+"0","  mutate(prev_decare = lag(decare)) %>% "
+"0","  ungroup()"
+"0","head(df_1)"

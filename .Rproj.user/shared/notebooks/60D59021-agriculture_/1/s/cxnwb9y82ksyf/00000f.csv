@@ -1,0 +1,3 @@
+"0","tahil$unit = str_trim(tahil$unit)"
+"0","sebze$unit = str_trim(sebze$unit)"
+"0","meyve$unit = str_trim(meyve$unit)"

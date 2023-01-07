@@ -1,0 +1,4 @@
+"0","df_region_1 <- df_region_1 %>% "
+"0","       mutate(difference=(Total_Agriarea_in_the_Region-prev_decare)) %>% "
+"0","         arrange((desc(-1*difference)))"
+"0","df_region_1"

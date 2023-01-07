@@ -1,0 +1,2 @@
+"0","new_cols <- c(""fruit_type"",""year"",""province"",""production"")"
+"0","colnames(meyve) <- new_cols"

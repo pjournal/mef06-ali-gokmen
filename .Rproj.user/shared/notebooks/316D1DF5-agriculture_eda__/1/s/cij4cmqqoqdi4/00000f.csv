@@ -1,0 +1,4 @@
+"0","df_region_1 <- df_region_1 %>% "
+"0","          mutate(difference_rate=round(difference/prev_decare,2)) %>% "
+"0","                   arrange((difference_rate))"
+"0","head(df_region_1)"

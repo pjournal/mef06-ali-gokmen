@@ -1,0 +1,277 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Assignment 1},
+  pdfauthor={Ali Gökmen},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Assignment 1}
+\author{Ali Gökmen}
+\date{2022-10-16}
+
+\begin{document}
+\maketitle
+
+\hypertarget{about-me}{%
+\subsection{ABOUT ME}\label{about-me}}
+
+Hello, I am Muhammed Ali Gökmen and 24 yo. I finished my Bachelor of
+City and Regional Planning in 2020 from Mimar Sinan Fine Arts University
+with the thesis of ``The Relationship Between Smart Cities and Smart
+Energy Systems: The sample of Urban Planning''. I examined in one part
+of my thesis that how smart energy systems can effectively manage by
+technology of big data and IoT. Also in my university years, I always
+curious about data and how to process it effectively. I have got Python
+class in university, some data analytics and statistics courses on Udemy
+and other educational places to get some insights and see what I can do
+in this area on the basis of personal curiosity. Besides, in my part
+time job I had the chance to practice the theoretical knowledge I
+learned from this course. While last year of my university I worked for
+Turkish Airlines as a part time clerk. I enhanced my data analytics
+skills in this meantime to have a oppurtunity to get hired there and
+keep pushing developing myself. After graduation I got hired as a
+specialist in the Management of Strategic Planning and Data Analysis
+Turkish Airlines and still working there now. In general, we are
+responsible for the analysis of reports flowing into our database.
+Basically, we clean the data by doing the relevant filters, then analyze
+it and focus on making meaningful inferences. We report the results to
+our executives in order to contribute to their decision-making
+processes.I want to use data analytics skills in our monthly sales
+forecasting process to shape it more understandable and realistic.
+
+\href{https://www.linkedin.com/in/maligokmen/}{\textbf{\emph{Here is my
+linkedin profile}}}
+
+\hypertarget{dashboard-builder-building-shiny-apps-without-writing-any-code}{%
+\subsection{\texorpdfstring{\textbf{Dashboard-Builder: Building Shiny
+Apps without writing any
+code}}{Dashboard-Builder: Building Shiny Apps without writing any code}}\label{dashboard-builder-building-shiny-apps-without-writing-any-code}}
+
+I have preferred to watch the conference named ``Dashboard-Builder:
+Building Shiny Apps'' presenting by Peter Gandenberger.
+
+In this conference, Mr.~Ganderberger appealed to people who want to make
+dashboard but don't know how to code in R and consider that R complex.
+So, last project of Peter's team allows people to make interactive
+dashboards.
+
+This drag\&drop dashboard builder lowering the barrier for entry new
+users starting their data-science journey.
+
+Main steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Import data
+\item
+  Build Dashboard
+\item
+  Export
+\item
+  Improve \& Extend
+\end{enumerate}
+
+Here is a screenshot of an example dashboard:
+
+\hypertarget{r-posts-relevant-to-my-interest}{%
+\subsection{3 R Posts relevant to my
+interest}\label{r-posts-relevant-to-my-interest}}
+
+\hypertarget{dot-chart}{%
+\subsubsection{Dot Chart}\label{dot-chart}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Dot Chart}
+
+\DocumentationTok{\#\#\# Setting seed for reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+\DocumentationTok{\#\#\# Defining variables}
+\NormalTok{month }\OtherTok{\textless{}{-}}\NormalTok{ month.name}
+\NormalTok{expected }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{6}\NormalTok{,}
+              \DecValTok{17}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{20}\NormalTok{)}
+\NormalTok{sold }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{2}\NormalTok{,}
+          \DecValTok{19}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{13}\NormalTok{)}
+\NormalTok{quarter }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{), }\FunctionTok{rep}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\FunctionTok{rep}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{), }\FunctionTok{rep}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+
+\DocumentationTok{\#\#\# Printing data}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(month, expected, sold, quarter)}
+\NormalTok{data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        month expected sold quarter
+## 1    January       15    8       1
+## 2   February       16   18       1
+## 3      March       20   12       1
+## 4      April       31   10       2
+## 5        May       11   41       2
+## 6       June        6    2       2
+## 7       July       17   19       3
+## 8     August       22   26       3
+## 9  September       32   14       3
+## 10   October       12   16       4
+## 11  November       19    9       4
+## 12  December       20   13       4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Chart}
+\FunctionTok{dotchart}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{sold, }\AttributeTok{labels =}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{month, }\AttributeTok{pch =} \DecValTok{21}\NormalTok{, }\AttributeTok{bg =} \StringTok{"green"}\NormalTok{, }\AttributeTok{pt.cex =} \FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{assignment1_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\hypertarget{bar-plot-chart}{%
+\subsubsection{Bar Plot Chart}\label{bar-plot-chart}}
+
+Bar plot charts can be used efficiently for:
+
+-to analyze a comparative study between various categories
+
+-to analyze the change of a variable over time in months or years
+
+For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(airquality}\SpecialCharTok{$}\NormalTok{Ozone, }\AttributeTok{main =} \StringTok{\textquotesingle{}Ozone Concenteration in air\textquotesingle{}}\NormalTok{, }
+        \AttributeTok{xlab =} \StringTok{\textquotesingle{}ozone levels\textquotesingle{}}\NormalTok{, }\AttributeTok{col =}\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{, }\AttributeTok{horiz =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{assignment1_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\hypertarget{density-plot-chart}{%
+\subsubsection{Density Plot Chart}\label{density-plot-chart}}
+
+Density plot chart can be used when we need to see representation of the
+distribution of a variable.
+
+For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_classic}\NormalTok{())}
+
+\CommentTok{\# Plot}
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(mpg, }\FunctionTok{aes}\NormalTok{(cty))}
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill=}\FunctionTok{factor}\NormalTok{(cyl)), }\AttributeTok{alpha=}\FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"Density plot"}\NormalTok{, }
+         \AttributeTok{subtitle=}\StringTok{"City Mileage Grouped by Number of cylinders"}\NormalTok{,}
+         \AttributeTok{caption=}\StringTok{"Source: mpg"}\NormalTok{,}
+         \AttributeTok{x=}\StringTok{"City Mileage"}\NormalTok{,}
+         \AttributeTok{fill=}\StringTok{"\# Cylinders"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{assignment1_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\href{https://www.geeksforgeeks.org/}{\textbf{Source Link}}
+
+\end{document}

@@ -1,0 +1,27 @@
+---
+title: "In Class Exercise 1"
+author: "Ali Gökmen"
+date: 2022-10-21
+format: 
+  html:
+    toc: true
+---
+
+### Easy Park: Urban Parking and Congestion
+
+Here is the [chosen]("https://www.gurobi.com/case_studies/easy-park-urban-parking-optimization/") case study.
+
+## Business Case and Problem
+
+The main issue of this case stands out as the traffic where approximately 30% of the vehicles circulating around the city are cars seeking parking spaces. While this is a great energy and financial loss, it also harms the natural environment. Congestion and parking are closely correlated, since cruising for a parking space creates additional delays and harms local traffic circulation. So, EasyPark developed a smartphone application that makes the parking process much easier throug the use of mathematical optimization.
+
+## Solution
+
+For solving this problem, Swedish company C3 IoT presented a parking and congestion model named Easy Park.
+
+It is a machine learning-based system that uses data from sensors and cameras to predict the availability of parking spaces in urban areas and help drivers find available parking spots more quickly. The system also collects data on traffic patterns and congestion levels in order to help cities optimize their traffic flow and reduce congestion. The systems feed from historical transactional data, mapping operations, geographical information system (GIS), user transaction data, user route data. 
+
+EasyPark uses a mixed-integer programming (MIP) model to compute the best route to search for a spot so that users can find best parking area to reach where they want in a shorter period.
+
+It has positive outputs such as a 30% to 50% reduction in the time required to find a parking space, where additional capacity increases should occur in case the parking problem grows, and the ability to price parking prices according to demand.
+

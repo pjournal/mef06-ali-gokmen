@@ -1,0 +1,7 @@
+"0","# Prepare data"
+"0","tarim <- readRDS(""data//tarim.rds"")"
+"0","meyve <- readRDS(""data//meyve.rds"")"
+"0","sebze <- readRDS(""data//sebze.rds"")"
+"0","tahil <- readRDS(""data//tahil.rds"")"
+"0","regions <- readRDS(""data//Regions.rds"")"
+"0","turkey <- readRDS(""data//turkey.rds"")"

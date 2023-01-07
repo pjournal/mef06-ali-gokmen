@@ -1,0 +1,6 @@
+"0",""
+"0","ggplot(data=df_elma, aes(x=product_name, y=toplam)) +"
+"0","  geom_bar(position=""dodge"",stat=""identity"") + "
+"0","  ggtitle(""Fruit Efficiency (KG % Per Tree)"") +"
+"0","  theme(text = element_text(size = 10),element_line(size =15),axis.text.x = element_text(angle = 90))"
+"0",""

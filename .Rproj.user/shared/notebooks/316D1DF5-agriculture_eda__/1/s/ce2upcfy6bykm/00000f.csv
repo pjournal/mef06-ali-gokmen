@@ -1,0 +1,2 @@
+"0","turkey_tarim_area_21 = merge(turkey, df_province, by.x = 'Code', by.y = 'province_code')"
+"0","head(turkey_tarim_area_21)"
